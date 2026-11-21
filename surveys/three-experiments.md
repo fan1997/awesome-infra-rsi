@@ -1,6 +1,6 @@
 # Three experiments that explain infra RSI
 
-[Project index](../README.md) · [十二项工作的中文图文综述](2026-11-inference-infra-rsi.zh-CN.md)
+[Project index](../README.md) · [Full English survey](2026-11-inference-infra-rsi.md) · [十二项工作的中文图文综述](2026-11-inference-infra-rsi.zh-CN.md)
 
 A published speedup can describe three different things: a better engine, a faster pipeline that does less work, or an agent that succeeds across a suite of engineering tasks. These three experiments give each claim its own test.
 

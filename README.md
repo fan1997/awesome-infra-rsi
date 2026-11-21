@@ -12,7 +12,7 @@
 | How to run enough experiments on a real model | **Together Compiler** keeps model layers resident and tests candidates at two scales. [The persistent engine](https://arxiv.org/abs/2611.14681) |
 | Whether a faster engine implies a capable systems agent | **Apple RSI-Inference Bench** scores performance work and new-model support separately. [Two-track leaderboard](https://rsi-inference.com/) |
 
-**Field notes**　[Three experiments in depth](surveys/three-experiments.md) · [Illustrated survey of twelve projects · 中文](surveys/2026-11-inference-infra-rsi.zh-CN.md)
+**Field notes**　[Full illustrated survey · English](surveys/2026-11-inference-infra-rsi.md) · [中文完整版](surveys/2026-11-inference-infra-rsi.zh-CN.md) · [Three experiments in depth](surveys/three-experiments.md)
 
 [Inference engines](#engines) · [Production workloads and upstream adoption](#workload) · [Kernel research and integration](#kernel) · [Benchmarks and harnesses](#eval) · [Training and adaptive serving](#adj)
 

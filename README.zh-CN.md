@@ -12,7 +12,7 @@
 | 能否在真实模型上跑足够多的实验？ | **Together Compiler** 让模型层常驻，用两种粒度筛选候选。[常驻引擎](https://arxiv.org/abs/2611.14681) |
 | 会改快一个模型，也能接入一个新模型吗？ | **Apple RSI-Inference Bench** 用两条独立计分的赛道回答。[双指标榜单](https://rsi-inference.com/) |
 
-**专题阅读**　[十二项工作的中文图文综述](surveys/2026-11-inference-infra-rsi.zh-CN.md) · [三个实验的英文导读](surveys/three-experiments.md)
+**专题阅读**　[十二项工作的中文图文综述](surveys/2026-11-inference-infra-rsi.zh-CN.md) · [完整英文综述](surveys/2026-11-inference-infra-rsi.md) · [三个实验的英文导读](surveys/three-experiments.md)
 
 [推理引擎](#engines) · [生产负载与上游采用](#workload) · [算子研究与系统接入](#kernel) · [基准与执行框架](#eval) · [训练与运行时自适应](#adj)
 

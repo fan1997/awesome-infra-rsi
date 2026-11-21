@@ -1,5 +1,7 @@
 # 当 Agent 开始改推理引擎：十二个近期项目的设计与实证
 
+[Full English edition](2026-11-inference-infra-rsi.md) · [中文项目索引](../README.zh-CN.md)
+
 **研究窗口：2026 年 8 月 21 日至 11 月 21 日。** 日期取近期论文、技术发布或可核查的实验记录。图注区分作者原图、原表和据原始记录重绘的图。性能数字均为作者报告值。六项有论文全文，三项以团队工程报告为主，InferRSI 依据固定版本的协议与实验账本，EngineTailor 依据会议录用摘要和团队详报，Apple RSI-Inference Bench 依据官方任务与榜单。
 
 以一次真实的优化为例：Agent 发现注意力慢，修改了 kernel，算子测试通过。接下来可能发生三件截然不同的事。在 InferRSI 的一次图像生成实验里，完整图像校验失败，改动被撤回；在 InferenceForge 的一次长上下文实验里，修复之所以有效，是因为真实请求长度不均；在 OpenRSI 的工作流中，即使性能可复现，改动还要经过维护者审查才能成为下一版的起点。理解这些工作的差异，要沿着**从哪里发现问题、在什么环境里试、凭什么采用**这条线读下去。[InferRSI 实验账本](https://github.com/InferMatrixLab/InferRSI/blob/9466bc8d910c9fef55d4a9e23ee1a82950280c30/docs/qwen-image-2.1-turbo-b300.md) · [InferenceForge 技术报告](https://agenteconomics.org/posts/inference-forge) · [OpenRSI 联合报告](https://index.openrsi.foundation/blog/2026/openrsi-sglang-omni/)
