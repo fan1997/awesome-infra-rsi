@@ -34,6 +34,7 @@
 - **[InferenceForge](https://agenteconomics.org/posts/inference-forge)** — 混合批次里的一条长请求暴露了解码瓶颈。团队用一小时 AgentX 流量评估修改；在 8×B300 的 Kimi K3 实验中，每用户保持至少 30 tok/s 时，每卡达到 12.8k tok/s。 [报告](https://agenteconomics.org/posts/inference-forge) · [调度改动](https://github.com/jcaip/sglang-fork/pull/3)
 - **[InferRSI](https://github.com/InferMatrixLab/InferRSI)** — 冻结工作负载、用独立进程复测，才能判定候选是否值得采用。Qwen-Image 的实验账本保留了一次 RMSNorm/RoPE 融合：算子测试通过，整张图像校验失败。 [代码](https://github.com/InferMatrixLab/InferRSI) · [实验记录](https://github.com/InferMatrixLab/InferRSI/blob/9466bc8d910c9fef55d4a9e23ee1a82950280c30/docs/qwen-image-2.1-turbo-b300.md)
 - **[OpenRSI × SGLang-Omni](https://index.openrsi.foundation/blog/2026/openrsi-sglang-omni/)** — 候选经独立复验和维护者评审后进入上游，成为下一轮开发的起点。合作报告覆盖八个模型、14 个已合入 PR，并说明每段性能比较期间还有哪些改动进入主干。 [联合报告](https://index.openrsi.foundation/blog/2026/openrsi-sglang-omni/) · [上游改动](https://github.com/sgl-project/sglang-omni/pull/2779)
+- **[ResearchBoost-Agent × G-STAR](https://github.com/DAGroup-PKU/ResearchBoost-Agent)** — Agent 分析瓶颈并修改模型代码，再用冻结的评测协议核验候选。合入上游的补丁在单张 H200 上将 G-STAR-Pro-8B 的端到端耗时从 138.56 降到 50.76 秒/图，两侧均使用 BF16、batch size 1 和同一个 52 步 refiner，图像码逐位一致，refiner 输出通过 PSNR 校验。 [上游改动与测量](https://github.com/DAGroup-PKU/G-STAR/pull/2)
 
 <a id="kernel"></a>
 
@@ -41,12 +42,14 @@
 
 - **[Sol-H3](https://nvlabs.github.io/Sana/Sol-Engine/Sol-H3/)** — 两阶段视频生成先在算法上减少去噪计算，再由 RSI 搜索融合和通信实现。LoRA 对照实验显示，最快的 BF16 权重合并改变了生成画面，而消费端融合在测试输入上保住了输出。 [论文](https://arxiv.org/abs/2609.35110) · [代码](https://github.com/NVlabs/Sana/tree/sol-engine/models/minimax_h3)
 - **[Atrex Kernel Agent](https://github.com/alibaba/atrex-kernel-agent/tree/aka-for-rsi)** — 系统 Agent 提交算子基线、负载和验收契约。后台研究可以继续，主 Agent 按任务 ID 重连、导出已验收的候选，在宿主中测接入时延并反馈是否采用。 [SDK](https://github.com/alibaba/atrex-kernel-agent/tree/aka-for-rsi) · [任务接口](https://github.com/alibaba/atrex-kernel-agent/blob/aka-for-rsi/docs/task-execution.md)
+- **[CompoundingKernel](https://arxiv.org/abs/2611.19230v2)** — 每道题归档已验证的 kernel 及其演化谱系，搜索控制器可以从早期候选继续分支。在相同墙钟时间下，这个搜索方法在 38 道对照题中的 35 道胜过手写的 UCB 树搜索策略。 [论文](https://arxiv.org/abs/2611.19230v2) · [方法代码与算子](https://huggingface.co/spaces/QianQu/CompoundingKernel-Explorer)
 
 <a id="eval"></a>
 
 ## 基准与执行框架
 
 - **[Apple RSI-Inference Bench](https://github.com/apple-aiml-research/ml-rsi-inference-bench)** — 37 道题覆盖 vLLM 和 SGLang 上的新模型接入、推理优化和回退修复。10 月 25 日榜单中，15 个 Agent 有 9 个取得了平均加速，却没有一次完整通过新模型接入题。 [题包](https://github.com/apple-aiml-research/ml-rsi-inference-bench/tree/main/tasks) · [榜单](https://rsi-inference.com/)
+- **[Humanity’s Last System](https://hlsbench.com/)** — Agent 在最多八张 H200 上从零搭建推理栈，再由独立容器用留出流量逐 token 验证。一个通用文本服务用更细粒度的前缀复用和投机解码，端到端得分达到 vLLM 的 1.91×，GLM-5.3-Flash 的 agentic coding 任务最好达到基线的 0.985×。 [评测报告](https://syfi.cs.washington.edu/blog/2026-11-20-introducing-hls/) · [执行器与题包](https://github.com/humanityslastsystem/hls)
 - **[OpenRSI Index / RSI-Harness](https://github.com/OpenRSI-Foundation/OpenRSI-Index)** — Index 收录任务与验证器，Harness 支持从本地 Docker 到多节点集群的长程执行。公开的 SGLang-Omni 题包把上游案例变成其他 Agent 可重新挑战的工作负载。 [执行器](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/RSI-Harness) · [题包](https://github.com/OpenRSI-Foundation/OpenRSI-Index/tree/main/rsi-tasks/SGNOMI)
 
 <a id="adj"></a>
